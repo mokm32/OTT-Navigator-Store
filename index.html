@@ -1,258 +1,567 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Beli akaun OTT Navigator premium untuk streaming tanpa had. Harga murah, aktivasi pantas, dan sokongan 24/7.">
-    <meta name="keywords" content="OTT Navigator, akaun OTT Navigator, beli OTT Navigator, streaming premium">
-    <meta name="author" content="OTT Navigator Store">
-    <title>OTT Navigator Premium - Beli Akaun Sekarang</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
-        }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        .btn-primary {
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 50;
-        }
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            animation: slideIn 0.3s ease-out;
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ Google Search Console Verification -->
+  <meta name="google-site-verification" content="tAlOue1TbNspSDAu26Y7AZZQhJ7qwTNYkSqBS_CQIxs" />
+
+  <!-- ✅ SEO Meta Tags -->
+  <title>Necklenj - Handmade & Unik</title>
+  <meta name="description" content="Necklenj - Koleksi produk handmade unik dan bergaya dari Malaysia.">
+  <meta name="keywords" content="necklenj, ott navigator, ott tv, ott navigator lifetime, jual id ott navigator, jual id ott tv, id ott murah, malaysia">
+  <meta name="robots" content="index, follow">
+
+  <!-- ✅ Open Graph (Paparan Cantik di WhatsApp/Facebook) -->
+  <meta property="og:title" content="Necklenj - Handmade & Unik">
+  <meta property="og:description" content="Koleksi produk handmade unik dan bergaya dari Malaysia.">
+  <meta property="og:image" content="https://mokm32.github.io/necklenj-site/images/logo.png">
+  <meta property="og:url" content="https://mokm32.github.io/necklenj-site/">
+  <meta property="og:type" content="website">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b1d3a;
+      color: #ffffff;
+    }
+
+    header {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0a2540;
+      border-bottom: 3px solid #00bfff;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #00bfff;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .cart-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #00bfff;
+      background-color: #14375d;
+      padding: 0.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-icon span {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: #ff4d4d;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.8rem;
+    }
+
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background-color: #14375d;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      transition: right 0.3s ease;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .cart-sidebar.open {
+      right: 0;
+    }
+
+    .cart-sidebar h2 {
+      color: #00bfff;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .cart-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .cart-sidebar li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      border-bottom: 1px solid #1b4e80;
+      margin-bottom: 0.5rem;
+    }
+
+    .cart-sidebar li button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cart-sidebar li button:hover {
+      background-color: #cc0000;
+    }
+
+    .cart-total {
+      font-size: 1.2rem;
+      color: #00bfff;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .cart-sidebar .close-cart {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .cart-sidebar .close-cart:hover {
+      background-color: #009acd;
+    }
+
+    .hero {
+      background-color: #0e2a4d;
+      padding: 2rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      color: #00bfff;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .channel-list {
+      padding: 2rem 1rem;
+      background-color: #14375d;
+      text-align: center;
+    }
+
+    .channel-list h2 {
+      color: #00bfff;
+      margin-bottom: 1rem;
+    }
+
+    .channel-list ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .channel-list li {
+      background-color: #1b4e80;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .channel-list img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .package-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 1rem;
+    }
+
+    .package {
+      background-color: #14375d;
+      border: 1px solid #1b4e80;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 260px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+    }
+
+    .package h3 {
+      color: #00bfff;
+    }
+
+    .package p {
+      font-size: 0.95rem;
+    }
+
+    .package .button-container {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .package button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .package button:hover {
+      background-color: #009acd;
+    }
+
+    .package .buy-now {
+      background-color: #28a745;
+    }
+
+    .package .buy-now:hover {
+      background-color: #218838;
+    }
+
+    form {
+      padding: 2rem 1rem;
+      max-width: 400px;
+      margin: auto;
+      background-color: #0e2a4d;
+      border-radius: 10px;
+    }
+
+    form h2 {
+      text-align: center;
+      color: #00bfff;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: none;
+    }
+
+    form button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #009acd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #0a2540;
+      border-top: 2px solid #00bfff;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: #00bfff;
+    }
+
+    .payment-methods {
+      text-align: center;
+      background-color: #0e2a4d;
+      padding: 2rem 1rem;
+    }
+
+    .payment-methods h2 {
+      color: #00bfff;
+    }
+
+    .payment-methods p {
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    .payment-methods .bank-info {
+      font-size: 1.1rem;
+      color: #00bfff;
+      background-color: #14375d;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .package-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        width: 90%;
+      }
+
+      .cart-sidebar {
+        width: 100%;
+        right: -100%;
+      }
+
+      .package .button-container {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-b from-blue-50 to-white">
-    <!-- Header -->
-    <header class="bg-white shadow-md py-4 sticky top-0 z-10">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-600">OTT Navigator Store</h1>
-            <nav class="space-x-6">
-                <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Ciri-ciri</a>
-                <a href="#pricing" class="text-gray-600 hover:text-blue-600 transition">Harga</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">Hubungi</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-blue-400 text-white py-24 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-5xl font-bold mb-6 fade-in">Akaun OTT Navigator Premium</h2>
-            <p class="text-xl mb-8 fade-in">Nikmati streaming tanpa had dengan akaun premium kami. Aktivasi pantas, harga berpatutan!</p>
-            <a href="#pricing" class="bg-orange-500 text-white px-8 py-4 rounded-full font-semibold btn-primary fade-in">Beli Sekarang</a>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 fade-in">Kenapa Pilih OTT Navigator?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg card fade-in">
-                    <i class="fas fa-tv text-5xl text-blue-600 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-4">Streaming Berkualiti</h3>
-                    <p class="text-gray-600">Nikmati kandungan dalam resolusi tinggi tanpa gangguan.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg card fade-in" style="transition-delay: 0.2s;">
-                    <i class="fas fa-rocket text-5xl text-blue-600 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-4">Aktivasi Pantas</h3>
-                    <p class="text-gray-600">Akaun anda aktif dalam masa kurang dari 24 jam.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg card fade-in" style="transition-delay: 0.4s;">
-                    <i class="fas fa-headset text-5xl text-blue-600 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-4">Sokongan 24/7</h3>
-                    <p class="text-gray-600">Pasukan kami sedia membantu anda bila-bila masa.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="bg-gray-100 py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 fade-in">Pilih Pelan Anda</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg card fade-in">
-                    <h3 class="text-2xl font-semibold mb-4">1 Device</h3>
-                    <p class="text-3xl font-bold mb-6 text-blue-600">RM 8</p>
-                    <ul class="text-left mb-8 space-y-3">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Akses penuh (Lifetime)</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Login 1 ID, 1 peranti</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Sokongan 24/7</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Aktivasi segera</li>
-                    </ul>
-                    <button onclick="showForm('1 Device')" class="bg-orange-500 text-white px-6 py-3 rounded-full btn-primary">Pilih Pelan</button>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg card fade-in" style="transition-delay: 0.2s;">
-                    <h3 class="text-2xl font-semibold mb-4">2 Devices</h3>
-                    <p class="text-3xl font-bold mb-6 text-blue-600">RM 16</p>
-                    <ul class="text-left mb-8 space-y-3">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Akses penuh (Lifetime)</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Login 1 ID, 2 peranti</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Sokongan 24/7</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Aktivasi segera</li>
-                    </ul>
-                    <button onclick="showForm('2 Devices')" class="bg-orange-500 text-white px-6 py-3 rounded-full btn-primary">Pilih Pelan</button>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg card fade-in" style="transition-delay: 0.4s;">
-                    <h3 class="text-2xl font-semibold mb-4">3 Devices</h3>
-                    <p class="text-3xl font-bold mb-6 text-blue-600">RM 24</p>
-                    <ul class="text-left mb-8 space-y-3">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Akses penuh (Lifetime)</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Login 1 ID, 3 peranti</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Sokongan 24/7</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Aktivasi segera</li>
-                    </ul>
-                    <button onclick="showForm('3 Devices')" class="bg-orange-500 text-white px-6 py-3 rounded-full btn-primary">Pilih Pelan</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Form Modal -->
-    <div id="bookingModal" class="modal">
-        <div class="modal-content">
-            <h2 class="text-2xl font-bold mb-6 text-center">Borang Tempahan</h2>
-            <div>
-                <label for="name" class="block text-gray-600 mb-2">Nama</label>
-                <input type="text" id="name" class="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                <label for="phone" class="block text-gray-600 mb-2">Nombor Telefon</label>
-                <input type="tel" id="phone" class="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                <label for="package" class="block text-gray-600 mb-2">Pakej</label>
-                <input type="text" id="package" class="w-full p-3 border rounded-lg mb-6 bg-gray-100" readonly>
-                <div class="flex justify-end space-x-4">
-                    <button onclick="closeForm()" class="bg-gray-500 text-white px-6 py-3 rounded-full btn-primary">Batal</button>
-                    <button onclick="submitForm()" class="bg-orange-500 text-white px-6 py-3 rounded-full btn-primary">Hantar</button>
-                </div>
-            </div>
-        </div>
+<body>
+  <header>
+    <h1>NeckleNj</h1>
+    <p>Jual ID OTT Navigator + VOD Lifetime</p>
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
     </div>
+  </header>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 fade-in">Hubungi Kami</h2>
-            <div class="max-w-lg mx-auto text-center">
-                <p class="text-gray-600 mb-8 fade-in">Hubungi kami melalui WhatsApp atau e-mel untuk maklumat lanjut atau membuat pesanan.</p>
-                <div class="flex justify-center space-x-6 fade-in">
-                    <a href="https://wa.me/60123456789" class="bg-green-500 text-white px-8 py-4 rounded-full btn-primary flex items-center">
-                        <i class="fab fa-whatsapp mr-2"></i>WhatsApp
-                    </a>
-                    <a href="mailto:support@ottnavigatorstore.com" class="bg-blue-600 text-white px-8 py-4 rounded-full btn-primary flex items-center">
-                        <i class="fas fa-envelope mr-2"></i>E-mel
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="cart-sidebar" id="cart-sidebar">
+    <h2>Troli Anda</h2>
+    <ul id="cart-items"></ul>
+    <p class="cart-total">Jumlah: RM<span id="cart-total">0.00</span></p>
+    <button class="close-cart" onclick="toggleCart()">Tutup Troli</button>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-4 text-center">
-            <p>© 2025 OTT Navigator Store. Hak cipta terpelihara.</p>
-        </div>
-    </footer>
+  <section class="hero">
+    <h2>🎬 Selamat Datang ke website NeckleNj – Hiburan Tanpa Batasan!</h2>
+    <p>
+      ✅ Lifetime Access. Tanpa Bayaran Bulanan.<br>
+      ✅ Ribuan Saluran + VOD Lengkap. Terus di TV, Android & Peranti Anda.<br><br>
+      Bayangkan…<br>
+      📺 Menonton saluran premium dari seluruh dunia<br>
+      🎞 Akses ke filem terkini & siri popular<br>
+      ⚡️ Tanpa lag, tanpa sekatan, tanpa kos tersembunyi<br><br>
+      Hanya dengan satu ID playlist – dan ianya seumur hidup!<br><br>
+      🔥 Kenapa Pilih NeckleNj?<br>
+      ✅ Lifetime ID Playlist – Bayar sekali, nikmati selamanya<br>
+      ✅ Lengkap dengan VOD – Filem, drama, rancangan hiburan & banyak lagi<br>
+      ✅ Sokongan OTT Navigator – Aplikasi paling stabil & mesra pengguna<br>
+      ✅ Kualiti HD & 4K – Visual tajam, pengalaman menonton premium<br>
+      ✅ Aktif Segera – Tak perlu tunggu, kami setup untuk anda terus jalan!
+    </p>
+  </section>
 
-    <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+  <section class="channel-list">
+    <h2>📺 Senarai Saluran</h2>
+    <ul>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Sports"/> Sports</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Movie"/> Movie</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="3 Beradik"/> 3 Beradik</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Malaysia"/> Malaysia</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Chinese"/> Chinese</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="India"/> India</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Indonesia"/> Indonesia</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="News"/> News</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Documentary"/> Documentary</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Arab"/> Arab</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Brunei"/> Brunei</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Entertainment"/> Entertainment</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Fast Channel"/> Fast Channel</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Korean"/> Korean</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Singapore"/> Singapore</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Kids"/> Kids</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Radio"/> Radio</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Pluto"/> Pluto</li>
+    </ul>
+  </section>
 
-        // Fade-in animations on scroll
-        const fadeIns = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+  <section class="package-container">
+    <div class="package">
+      <h3>Pakej 1</h3>
+      <p>1 ID untuk 1 Peranti</p>
+      <p><strong>RM8.00</strong> Lifetime</p>
+      <div class="button-container">
+        <button onclick="addToCart('Pakej 1', 8.00)">Tambah ke Troli</button>
+        <button class="buy-now" onclick="buyNow('Pakej 1', 8.00)">Beli Sekarang</button>
+      </div>
+    </div>
+    <div class="package">
+      <h3>Pakej 2</h3>
+      <p>1 ID untuk 2 Peranti</p>
+      <p><strong>RM16.00</strong> Lifetime</p>
+      <div class="button-container">
+        <button onclick="addToCart('Pakej 2', 16.00)">Tambah ke Troli</button>
+        <button class="buy-now" onclick="buyNow('Pakej 2', 16.00)">Beli Sekarang</button>
+      </div>
+    </div>
+    <div class="package">
+      <h3>Pakej 3</h3>
+      <p>1 ID untuk 3 Peranti</p>
+      <p><strong>RM24.00</strong> Lifetime</p>
+      <div class="button-container">
+        <button onclick="addToCart('Pakej 3', 24.00)">Tambah ke Troli</button>
+        <button class="buy-now" onclick="buyNow('Pakej 3', 24.00)">Beli Sekarang</button>
+      </div>
+    </div>
+    <div class="package">
+      <h3>Pakej 4</h3>
+      <p>1 ID untuk 4 Peranti</p>
+      <p><strong>RM32.00</strong> Lifetime</p>
+      <div class="button-container">
+        <button onclick="addToCart('Pakej 4', 32.00)">Tambah ke Troli</button>
+        <button class="buy-now" onclick="buyNow('Pakej 4', 32.00)">Beli Sekarang</button>
+      </div>
+    </div>
+    <div class="package">
+      <h3>Pakej Agen A</h3>
+      <p>1 ID untuk 20 Peranti</p>
+      <p><strong>RM150.00</strong> Lifetime</p>
+      <div class="button-container">
+        <button onclick="addToCart('Pakej Agen A', 150.00)">Tambah ke Troli</button>
+        <button class="buy-now" onclick="buyNow('Pakej Agen A', 150.00)">Beli Sekarang</button>
+      </div>
+    </div>
+    <div class="package">
+      <h3>Pakej Agen B</h3>
+      <p>1 ID untuk 50 Peranti</p>
+      <p><strong>RM325.00</strong> Lifetime</p>
+      <div class="button-container">
+        <button onclick="addToCart('Pakej Agen B', 325.00)">Tambah ke Troli</button>
+        <button class="buy-now" onclick="buyNow('Pakej Agen B', 325.00)">Beli Sekarang</button>
+      </div>
+    </div>
+    <div class="package">
+      <h3>Pakej Agen C</h3>
+      <p>1 ID untuk 100 Peranti</p>
+      <p><strong>RM600.00</strong> Lifetime</p>
+      <div class="button-container">
+        <button onclick="addToCart('Pakej Agen C', 600.00)">Tambah ke Troli</button>
+        <button class="buy-now" onclick="buyNow('Pakej Agen C', 600.00)">Beli Sekarang</button>
+      </div>
+    </div>
+  </section>
 
-        fadeIns.forEach(element => observer.observe(element));
+  <form id="orderForm" onsubmit="submitOrder(event)">
+    <h2>Borang Tempahan</h2>
+    <input type="text" id="nama" placeholder="Nama Penuh" required>
+    <input type="text" id="telefon" placeholder="No Telefon" required>
+    <textarea id="pakej" readonly></textarea>
+    <button type="submit">Hantar ke WhatsApp</button>
+  </form>
 
-        // Modal form functions
-        const modal = document.getElementById('bookingModal');
-        const packageInput = document.getElementById('package');
+  <section class="payment-methods">
+    <h2>Kaedah Pembayaran</h2>
+    <div class="bank-info">
+      <a href="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" target="_blank">
+        <img src="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" alt="Bukti Pembayaran" style="width: 200px; height: auto; margin-bottom: 10px; border-radius: 8px;">
+      </a>
+      <p><strong>Bank: Hong Leong Bank</strong></p>
+      <p><strong> - </strong></p>
+      <p>Sila buat pembayaran melalui <strong>QR Payment</strong> ke akaun di atas dan hantar bukti pembayaran kepada kami melalui WhatsApp.</p>
+    </div>
+  </section>
 
-        function showForm(packageName) {
-            packageInput.value = packageName;
-            modal.style.display = 'flex';
-        }
+  <footer>
+    📞 Hubungi: <a href="tel:+601136237443">011-3623 7443</a><br/>
+    📧 Email: <a href="mailto:mokm32888@gmail.com">mokm32888@gmail.com</a><br/>
+    💬 WhatsApp: <a href="https://wa.me/601136237443">Klik untuk WhatsApp</a>
+  </footer>
 
-        function closeForm() {
-            modal.style.display = 'none';
-            document.getElementById('name').value = '';
-            document.getElementById('phone').value = '';
-            packageInput.value = '';
-        }
+  <script>
+    let cart = [];
 
-        function submitForm() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const package = packageInput.value;
+    function toggleCart() {
+      const cartSidebar = document.getElementById('cart-sidebar');
+      cartSidebar.classList.toggle('open');
+    }
 
-            if (!name || !phone) {
-                alert('Sila isi semua medan!');
-                return;
-            }
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+    }
 
-            const message = encodeURIComponent(`Tempahan Baru:\nNama: ${name}\nTelefon: ${phone}\nPakej: ${package}`);
-            const whatsappUrl = `https://wa.me/601136237443?text=${message}`;
-            window.open(whatsappUrl, '_blank');
+    function buyNow(name, price) {
+      cart = [{ name, price }]; // Clear cart and add only the selected package
+      updateCart();
+      window.scrollTo({ top: document.getElementById('orderForm').offsetTop - 20, behavior: 'smooth' });
+    }
 
-            closeForm();
-        }
-    </script>
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      const cartCount = document.getElementById('cart-count');
+      const pakejField = document.getElementById('pakej');
+
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${item.name} - RM${item.price.toFixed(2)}</span><button onclick="removeFromCart(${index})">Buang</button>`;
+        cartItems.appendChild(li);
+      });
+
+      cartTotal.textContent = total.toFixed(2);
+      cartCount.textContent = cart.length;
+
+      // Update the textarea with cart contents
+      pakejField.value = cart.map(item => `${item.name} - RM${item.price.toFixed(2)}`).join('\n') + (cart.length > 0 ? `\nJumlah: RM${total.toFixed(2)}` : '');
+    }
+
+    function submitOrder(e) {
+      e.preventDefault();
+      const nama = document.getElementById('nama').value;
+      const telefon = document.getElementById('telefon').value;
+      const pakej = document.getElementById('pakej').value;
+      if (!pakej) {
+        alert('Sila tambah pakej ke troli sebelum membuat tempahan.');
+        return;
+      }
+      const msg = `Tempahan Baru:\nNama: ${nama}\nTelefon: ${telefon}\nPakej:\n${pakej}`;
+      const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+  </script>
 </body>
 </html>
