@@ -511,12 +511,17 @@
     }
 
     function addToCart(name, price) {
-      cart.push({ name, price });
+      const existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
       updateCart();
     }
 
     function buyNow(name, price) {
-      cart = [{ name, price }]; // Clear cart and add only the selected package
+      cart = [{ name, price, quantity: 1 }]; // Clear cart and add only the selected package
       updateCart();
       window.scrollTo({ top: document.getElementById('orderForm').offsetTop - 20, behavior: 'smooth' });
     }
@@ -534,19 +539,22 @@
 
       cartItems.innerHTML = '';
       let total = 0;
+      let totalItems = 0;
 
       cart.forEach((item, index) => {
-        total += item.price;
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        totalItems += item.quantity;
         const li = document.createElement('li');
-        li.innerHTML = `<span>${item.name} - RM${item.price.toFixed(2)}</span><button onclick="removeFromCart(${index})">Buang</button>`;
+        li.innerHTML = `<span>${item.name} x${item.quantity} - RM${itemTotal.toFixed(2)}</span><button onclick="removeFromCart(${index})">Buang</button>`;
         cartItems.appendChild(li);
       });
 
       cartTotal.textContent = total.toFixed(2);
-      cartCount.textContent = cart.length;
+      cartCount.textContent = totalItems;
 
       // Update the textarea with cart contents
-      pakejField.value = cart.map(item => `${item.name} - RM${item.price.toFixed(2)}`).join('\n') + (cart.length > 0 ? `\nJumlah: RM${total.toFixed(2)}` : '');
+      pakejField.value = cart.map(item => `${item.name} x${item.quantity} - RM${(item.price * item.quantity).toFixed(2)}`).join('\n') + (cart.length > 0 ? `\nJumlah: RM${total.toFixed(2)}` : '');
     }
 
     function submitOrder(e) {
@@ -565,4 +573,3 @@
   </script>
 </body>
 </html>
-
