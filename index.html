@@ -317,7 +317,7 @@ function renderCart(){
   el.innerHTML = "";
   let sum=0;
   cart.forEach((item,index)=>{
-    el.innerHTML += `<div class="cart-item">${item.type} - Devices: ${item.devices} - RM${item.total}<button class="btn btn-device" onclick="removeFromCart(${index})" style="background:#f87171; margin-left:10px;">X</button></div>`;
+    el.innerHTML += `<div class="cart-item">${item.type} - Devices: ${item.devices} - RM${item.total}<button class="btn btn-device" onclick="removeFromCart(${index})" style="background:#f87171; margin-left:10px;">Buang</button></div>`;
     sum+=item.total;
   });
   document.getElementById("cart-total").innerText = "Jumlah: RM"+sum;
