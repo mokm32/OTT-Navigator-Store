@@ -281,11 +281,21 @@ function updateCountdown() {
 
   let diff = promoEnd - now; // ms
   let seconds = Math.floor(diff / 1000);
-  let h = Math.floor(seconds / 3600);
-  let m = Math.floor((seconds % 3600) / 60);
-  let s = seconds % 60;
 
-  countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${h}j ${m}m ${s}s`;
+  let days = Math.floor(seconds / 86400);
+
+  // Jika lebih dari 24 jam → paparan hari
+  if(days > 0){
+    countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${days} hari`;
+  } 
+  else {
+    // Jika kurang dari 24 jam → paparan jam/minit/saat
+    let h = Math.floor(seconds / 3600);
+    let m = Math.floor((seconds % 3600) / 60);
+    let s = seconds % 60;
+
+    countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${h}j ${m}m ${s}s`;
+  }
 }
 
 // run every second
