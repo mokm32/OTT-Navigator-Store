@@ -254,6 +254,15 @@ function showOnScroll() {
 window.addEventListener('scroll', showOnScroll);
 showOnScroll();
 
+/* ===== PROMO & DEVICE SETUP ===== */
+const promoStart = new Date("2026-03-31T00:00:00"); // Tarikh mula promosi
+const promoEnd   = new Date("2026-05-01T23:59:59"); // Tarikh tamat promosi
+const promoPrice = 20;
+const promoActive = true;
+
+const prices = { life:30, guna:10, bulan:8 };
+let devices = { life:1, guna:1, bulan:1 };
+
 /* ===== PROMO COUNTDOWN FIX ===== */
 const countdownEl = document.getElementById("countdown");
 
@@ -279,16 +288,22 @@ function updateCountdown() {
   countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${h}j ${m}m ${s}s`;
 }
 
+// run every second
 setInterval(updateCountdown, 1000);
 updateCountdown(); // run sekali pada load
 
-/* DEVICE & PRICES */
-const prices = { life:30, guna:10, bulan:8 };
-let devices = { life:1, guna:1, bulan:1 };
-const promoActive = true;
-const promoStart = new Date("2026-03-31T00:00:00");
-const promoEnd = new Date("2026-05-01T23:59:59");
-const promoPrice = 20;
+/* ===== PROMO DISPLAY & UPDATE TOTAL ===== */
+const lifetimeOriginal = document.getElementById("lifetime-original");
+const lifetimePromo = document.getElementById("lifetime-promo");
+const now = new Date();
+
+if(promoActive && now>=promoStart && now<=promoEnd){
+  lifetimeOriginal.innerText = "RM"+prices.life;
+  lifetimePromo.innerText = "RM"+promoPrice;
+}else{
+  lifetimeOriginal.style.display="none";
+  lifetimePromo.innerText="RM"+prices.life;
+}
 
 function update(type, change){
   devices[type] += change;
@@ -301,17 +316,7 @@ function update(type, change){
   document.getElementById(type+"-total").innerText = "Total: RM"+total;
 }
 
-/* PROMO DISPLAY */
-const lifetimeOriginal = document.getElementById("lifetime-original");
-const lifetimePromo = document.getElementById("lifetime-promo");
-const now = new Date();
-if(promoActive && now>=promoStart && now<=promoEnd){
-  lifetimeOriginal.innerText = "RM"+prices.life;
-  lifetimePromo.innerText = "RM"+promoPrice;
-}else{
-  lifetimeOriginal.style.display="none";
-  lifetimePromo.innerText="RM"+prices.life;
-}
+// init totals
 update("life",0);
 update("guna",0);
 update("bulan",0);
