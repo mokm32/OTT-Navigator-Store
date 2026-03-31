@@ -325,13 +325,27 @@ function renderCart(){
   updateWhatsAppLink(sum);
 }
 function updateWhatsAppLink(totalAmount){
-  if(cart.length===0){ document.getElementById("whatsapp-checkout").href="#"; document.getElementById("whatsapp-checkout").onclick=function(){alert("Troli kosong!"); return false;}; return; }
+  const whatsappNumber = "601136237443"; // nombor WhatsApp / WhatsApp Business anda
+  
+  if(cart.length === 0){
+    document.getElementById("whatsapp-checkout").href = "#";
+    document.getElementById("whatsapp-checkout").onclick = function(){
+      alert("Troli kosong!");
+      return false;
+    };
+    return;
+  }
+
   let msg = "Saya ingin order ID OTT dari NeckleNj:\n\n";
-  cart.forEach(item=>{ msg += `- ${item.type}: ${item.devices} device(s) - RM${item.total}\n`; });
-  msg += `\nJumlah Keseluruhan: RM${totalAmount}`;
-  msg = encodeURIComponent(msg);
-  document.getElementById("whatsapp-checkout").href = `https://wa.me/601136237443?text=${msg}`;
-  document.getElementById("whatsapp-checkout").onclick=null;
+  cart.forEach(item => {
+    msg += `- ${item.type}: ${item.devices} device(s) - RM${item.total}\n`;
+  });
+  msg += `\nJumlah Keseluruhan: RM${totalAmount}\n\nSila sahkan order saya.`;
+
+  const encodedMsg = encodeURIComponent(msg);
+
+  document.getElementById("whatsapp-checkout").href = `https://wa.me/${whatsappNumber}?text=${encodedMsg}`;
+  document.getElementById("whatsapp-checkout").onclick = null;
 }
 </script>
 
