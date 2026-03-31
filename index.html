@@ -254,17 +254,33 @@ function showOnScroll() {
 window.addEventListener('scroll', showOnScroll);
 showOnScroll();
 
-/* COUNTDOWN PROMO */
-let time = 86400;
-const el = document.getElementById("countdown");
-setInterval(() => {
-  let h = Math.floor(time/3600);
-  let m = Math.floor((time%3600)/60);
-  let s = time%60;
-  el.innerHTML = "⏳ Promosi Tamat Dalam: " + h+"j "+m+"m "+s+"s";
-  time--;
-  if(time < 0) time = 86400;
-},1000);
+/* ===== PROMO COUNTDOWN FIX ===== */
+const countdownEl = document.getElementById("countdown");
+
+function updateCountdown() {
+  const now = new Date();
+  
+  if(now < promoStart){
+    countdownEl.innerText = "⏳ Promosi belum bermula";
+    return;
+  }
+  
+  if(now > promoEnd){
+    countdownEl.innerText = "❌ Promosi tamat";
+    return;
+  }
+
+  let diff = promoEnd - now; // ms
+  let seconds = Math.floor(diff / 1000);
+  let h = Math.floor(seconds / 3600);
+  let m = Math.floor((seconds % 3600) / 60);
+  let s = seconds % 60;
+
+  countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${h}j ${m}m ${s}s`;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown(); // run sekali pada load
 
 /* DEVICE & PRICES */
 const prices = { life:30, guna:10, bulan:8 };
