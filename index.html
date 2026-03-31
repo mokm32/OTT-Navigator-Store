@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="tAlOue1TbNspSDAu26Y7AZZQhJ7qwTNYkSqBS_CQIxs" />
+
+  <!-- SEO Meta Tags -->
+  <title>Necklenj - Handmade & Unik</title>
+  <meta name="description" content="Necklenj - Koleksi produk handmade unik dan bergaya dari Malaysia.">
+  <meta name="keywords" content="necklenj, ott navigator, ott tv, ott navigator lifetime, jual id ott navigator, jual id ott tv, id ott murah, malaysia">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Necklenj - Jual ID OTT">
+  <meta property="og:description" content="Jual ID OTT Termurah dan Terpercaya Di Malaysia.">
+  <meta property="og:image" content="https://i.ibb.co/mrNKFM6V/Untitled-design.png">
+  <meta property="og:url" content="https://mokm32.github.io/necklenj-site/">
+  <meta property="og:type" content="website">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b1d3a;
+      color: #ffffff;
+    }
+    header {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0a2540;
+      border-bottom: 3px solid #00bfff;
+    }
+    header h1 {
+      font-size: 2rem;
+      color: #00bfff;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+    .hero {
+      background-color: #0e2a4d;
+      padding: 2rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .hero h2 {
+      font-size: 1.5rem;
+      color: #00bfff;
+    }
+    .hero p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    .promo {
+      padding: 2rem 1rem;
+      background-color: #f39c12;
+      text-align: center;
+      color: #0b1d3a;
+      border-radius: 12px;
+      margin: 2rem auto;
+      max-width: 700px;
+    }
+    #countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .channel-list {
+      padding: 2rem 1rem;
+      background-color: #14375d;
+      text-align: center;
+    }
+    .channel-list ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .channel-list li {
+      background-color: #1b4e80;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .channel-list img {
+      width: 20px;
+      height: 20px;
+    }
+    .package-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 1rem;
+    }
+    .package {
+      background-color: #14375d;
+      border: 1px solid #1b4e80;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 260px;
+      text-align: center;
+    }
+    .package h3 {
+      color: #00bfff;
+    }
+    .package button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .cart-container {
+      background-color: #14375d;
+      padding: 2rem;
+      max-width: 700px;
+      margin: 2rem auto;
+      border-radius: 12px;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #0a2540;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>NeckleNj</h1>
+  <p>Jual ID OTT Navigator + VOD Lifetime</p>
+</header>
+
+<section class="hero">
+  <h2>🎬 Selamat Datang ke website NeckleNj – Hiburan Tanpa Batasan!</h2>
+  <p>
+    ✅ Lifetime Access. Tanpa Bayaran Bulanan.<br>
+    ✅ Ribuan Saluran + VOD Lengkap.
+  </p>
+</section>
+
+<section class="promo">
+  <h2>Tawaran Terhad!</h2>
+  <div id="countdown"></div>
+</section>
+
+<section class="channel-list">
+  <h2>📺 Senarai Saluran</h2>
+  <ul>
+    <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png"> Sports</li>
+    <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png"> Movie</li>
+    <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png"> Malaysia</li>
+  </ul>
+</section>
+
+<section class="package-container" id="package-container"></section>
+
+<section class="cart-container">
+  <h2>Troli Anda</h2>
+  <ul id="cart-items"></ul>
+  <p>Jumlah: RM<span id="cart-total">0.00</span></p>
+</section>
+
+<form id="orderForm">
+  <h2>Borang Tempahan</h2>
+  <input type="text" placeholder="Nama" required>
+  <input type="text" placeholder="Telefon" required>
+  <textarea></textarea>
+  <button>Hantar</button>
+</form>
+
+<footer>
+  📞 011-3623 7443
+</footer>
+
+<script>
+  let cart = [];
+
+  const packages = [
+    { name: 'ID Lifetime', basePrice: 20 },
+    { name: '3 Bulan', basePrice: 8 }
+  ];
+
+  function updatePackagePrices() {
+    const container = document.getElementById('package-container');
+    container.innerHTML = '';
+    packages.forEach(pkg => {
+      const div = document.createElement('div');
+      div.className = 'package';
+      div.innerHTML = `
+        <h3>${pkg.name}</h3>
+        <p>RM${pkg.basePrice}</p>
+        <button onclick="addToCart('${pkg.name}', ${pkg.basePrice})">Tambah</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    updateCart();
+  }
+
+  function updateCart() {
+    const list = document.getElementById('cart-items');
+    const total = document.getElementById('cart-total');
+    list.innerHTML = '';
+    let sum = 0;
+
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item.name + ' - RM' + item.price;
+      list.appendChild(li);
+      sum += item.price;
+    });
+
+    total.textContent = sum.toFixed(2);
+  }
+
+  function startCountdown() {
+    const end = new Date('2025-09-16').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = end - now;
+      document.getElementById('countdown').textContent = Math.floor(diff / 1000) + 's';
+    }, 1000);
+  }
+
+  startCountdown();
+  updatePackagePrices();
+</script>
+
+</body>
+</html>
