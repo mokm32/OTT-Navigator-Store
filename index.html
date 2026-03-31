@@ -285,11 +285,7 @@ function addToCart(type){
   cart.push({type:type, devices:deviceCount, total:total});
   renderCart();
 }
-function removeCart(id){
-  cart=cart.filter(c=>c.id!==id);
-  renderCart();
-}
-
+function removeFromCart(index){ cart.splice(index,1); renderCart(); }
 function renderCart(){
   const el = document.getElementById("cart-items");
   el.innerHTML = "";
