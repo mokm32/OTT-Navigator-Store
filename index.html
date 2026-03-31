@@ -318,7 +318,7 @@ function renderCart(){
   let sum=0;
   cart.forEach((item,index)=>{
     el.innerHTML += `<div class="cart-item">${item.type} - Devices: ${item.devices} - RM${item.total}<button class="btn btn-device" onclick="removeFromCart(${index})" style="background:#f87171; margin-left:10px; padding:4px 8px; font-size:14px;">
-    Buang</button></div>`;
+    🧺️</button></div>`;
     sum+=item.total;
   });
   document.getElementById("cart-total").innerText = "Jumlah: RM"+sum;
