@@ -289,14 +289,15 @@ if(now > promoEnd){
   let seconds = Math.floor(diff / 1000);
   let days = Math.floor(seconds / 86400);
 
-  // 👉 Jika lebih dari 24 jam (papar hari + jam)
+  // 👉 Jika lebih dari 24 jam (papar hari + jam + minit + saat)
   if(days > 0){
-    let h = Math.floor((seconds % 86400) / 3600);
-    countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${days} hari ${h} jam`;
-    
-    // warna normal (kuning)
-    countdownEl.style.color = "#facc15";
-  } 
+  let h = Math.floor((seconds % 86400) / 3600);
+  let m = Math.floor((seconds % 3600) / 60);
+  let s = seconds % 60;
+
+  countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${days} hari ${pad(h)}j ${pad(m)}m ${pad(s)}s`;
+  countdownEl.style.color = "#facc15";
+} 
   else {
     // 👉 Jika kurang 24 jam (papar jam/minit/saat)
     let h = Math.floor(seconds / 3600);
