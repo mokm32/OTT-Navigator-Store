@@ -266,35 +266,47 @@ let devices = { life:1, guna:1, bulan:1 };
 /* ===== PROMO COUNTDOWN FIX ===== */
 const countdownEl = document.getElementById("countdown");
 
+function pad(n){
+  return n.toString().padStart(2,'0');
+}
+  
 function updateCountdown() {
   const now = new Date();
   
   if(now < promoStart){
-    countdownEl.innerText = "⏳ Promosi belum bermula";
-    return;
-  }
-  
-  if(now > promoEnd){
-    countdownEl.innerText = "❌ Promosi tamat";
-    return;
-  }
+  countdownEl.innerText = "⏳ Promosi belum bermula";
+  countdownEl.style.color = "#94a3b8"; // kelabu
+  return;
+}
 
-  let diff = promoEnd - now; // ms
+if(now > promoEnd){
+  countdownEl.innerText = "❌ Promosi tamat";
+  countdownEl.style.color = "#ef4444"; // merah gelap
+  return;
+}
+
+  let diff = promoEnd - now;
   let seconds = Math.floor(diff / 1000);
-
   let days = Math.floor(seconds / 86400);
 
-  // Jika lebih dari 24 jam → paparan hari
+  // 👉 Jika lebih dari 24 jam (papar hari + jam)
   if(days > 0){
-    countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${days} hari`;
+    let h = Math.floor((seconds % 86400) / 3600);
+    countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${days} hari ${h} jam`;
+    
+    // warna normal (kuning)
+    countdownEl.style.color = "#facc15";
   } 
   else {
-    // Jika kurang dari 24 jam → paparan jam/minit/saat
+    // 👉 Jika kurang 24 jam (papar jam/minit/saat)
     let h = Math.floor(seconds / 3600);
     let m = Math.floor((seconds % 3600) / 60);
     let s = seconds % 60;
 
-    countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${h}j ${m}m ${s}s`;
+    countdownEl.innerText = `⏳ Promosi Tamat Dalam: ${pad(h)}j ${pad(m)}m ${pad(s)}s`;
+
+    // warna urgent (merah)
+    countdownEl.style.color = "#f87171";
   }
 }
 
